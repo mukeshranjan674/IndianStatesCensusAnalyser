@@ -1,7 +1,12 @@
 package com.capgemini.sensusanalyser;
 
 public class StateCensusAnalyser {
-	public static void main(String[] args) {
-		System.out.println("*****Welcome to State Census Analyser*****");
+
+	public StateCensusAnalyser() {
+
+	}
+
+	public int loadIndiaCensusData(String STATE_CSV_DATA) {
+		return new CSVStateCensus().loadIndiaCensusData(STATE_CSV_DATA);
 	}
 }
