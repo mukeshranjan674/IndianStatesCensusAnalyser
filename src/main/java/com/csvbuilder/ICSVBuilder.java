@@ -1,4 +1,5 @@
-package com.capgemini.sensusanalyser;
+package com.csvbuilder;
+
 
 import java.io.Reader;
 import java.util.Iterator;

@@ -1,4 +1,4 @@
-package com.capgemini.sensusanalyser;
+package com.csvbuilder;
 
 public class CSVBuilderFactory {
 

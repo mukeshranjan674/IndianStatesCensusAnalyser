@@ -8,6 +8,9 @@ import java.util.Iterator;
 import java.util.stream.StreamSupport;
 
 import com.capgemini.sensusanalyser.CensusAnalyserException.ExceptionType;
+import com.csvbuilder.CSVBuilderFactory;
+import com.csvbuilder.CSVException;
+import com.csvbuilder.ICSVBuilder;
 
 public class CSVStates {
 
@@ -22,7 +25,7 @@ public class CSVStates {
 			throw new CensusAnalyserException(e.getMessage(), ExceptionType.FILE_NOT_FOUND);
 		} catch (CSVException e) {
 			throw new CensusAnalyserException(e.getMessage(), ExceptionType.CSV_FILE_INTERNAL_ISSUES);
-		}catch (RuntimeException e) {
+		} catch (RuntimeException e) {
 			throw new CensusAnalyserException(e.getMessage(), ExceptionType.CSV_FILE_INTERNAL_ISSUES);
 		}
 	}

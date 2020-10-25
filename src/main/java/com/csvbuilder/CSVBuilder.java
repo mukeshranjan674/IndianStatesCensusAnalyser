@@ -1,10 +1,9 @@
-package com.capgemini.sensusanalyser;
+package com.csvbuilder;
 
 import java.io.Reader;
 import java.util.Iterator;
 import java.util.stream.StreamSupport;
 
-import com.capgemini.sensusanalyser.CensusAnalyserException.ExceptionType;
 import com.opencsv.bean.CsvToBean;
 import com.opencsv.bean.CsvToBeanBuilder;
 

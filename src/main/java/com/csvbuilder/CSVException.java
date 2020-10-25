@@ -1,4 +1,4 @@
-package com.capgemini.sensusanalyser;
+package com.csvbuilder;
 
 public class CSVException extends Throwable{
 	public CSVException(String message, ExceptionType type) {

@@ -8,6 +8,9 @@ import java.util.Iterator;
 import java.util.stream.StreamSupport;
 
 import com.capgemini.sensusanalyser.CensusAnalyserException.ExceptionType;
+import com.csvbuilder.CSVBuilderFactory;
+import com.csvbuilder.CSVException;
+import com.csvbuilder.ICSVBuilder;
 
 public class CSVStateCensus {
 
