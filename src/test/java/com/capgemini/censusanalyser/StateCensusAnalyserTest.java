@@ -12,15 +12,16 @@ public class StateCensusAnalyserTest {
 
 	private static final String STATE_CENSUS_CSV_FILE_PATH = "./src/test/resources/StateCensusData.csv";
 	private static final String WRONG_CSV_FILE_PATH = "./src/main/resources/StateCensusData.csv";
-	private static final String CENSUS_CSV_FILE_PATH = "./src/test/resources/CensusData.csv";
+	private static final String CENSUS_CSV_FILE_PATH = "./src/test/resources/WrongCensusData.csv";
+	private static final String INDIAN_CENSUS_CSV_WRONG_DELIMITER = "./src/test/resources/WrongDelimiterData.csv";
 
 	@Test
 	public void whenGivenCsvPathShouldReturnNumberOfRecords() {
 		try {
 			StateCensusAnalyser stateCensusAnalyser = new StateCensusAnalyser();
-			int records = stateCensusAnalyser.loadIndiaCensusData(STATE_CENSUS_CSV_FILE_PATH);
-			assertEquals(28, records);
-			System.out.println(records);
+			int numOfRecords = stateCensusAnalyser.loadIndiaCensusData(STATE_CENSUS_CSV_FILE_PATH);
+			assertEquals(28, numOfRecords);
+			System.out.println(numOfRecords);
 		} catch (CensusAnalyserException e) {
 			e.getMessage();
 		}
@@ -44,10 +45,19 @@ public class StateCensusAnalyserTest {
 			StateCensusAnalyser stateCensusAnalyser = new StateCensusAnalyser();
 			ExpectedException exceptionRule = ExpectedException.none();
 			exceptionRule.expect(CensusAnalyserException.class);
-			int records = stateCensusAnalyser.loadIndiaCensusData(CENSUS_CSV_FILE_PATH);
-			System.out.println(records);
+			int numOfRecords = stateCensusAnalyser.loadIndiaCensusData(CENSUS_CSV_FILE_PATH);
 		} catch (CensusAnalyserException e) {
-			assertEquals(CensusAnalyserException.ExceptionType.WRONG_CSV_DATA, e.type);
+			assertEquals(CensusAnalyserException.ExceptionType.CSV_FILE_INTERNAL_ISSUES, e.type);
 		}
 	}
+	
+	  @Test
+	    public void givenWrongDelimiter_InIndiaCensusData_ShouldReturnCustomExceptionType() {
+	        try {
+	        	StateCensusAnalyser stateCensusAnalyser = new StateCensusAnalyser();
+	            int numOfRecords = stateCensusAnalyser.loadIndiaCensusData(INDIAN_CENSUS_CSV_WRONG_DELIMITER);
+	        } catch (CensusAnalyserException e) {
+	            assertEquals(CensusAnalyserException.ExceptionType.CSV_FILE_INTERNAL_ISSUES, e.type);
+	        }
+	    }
 }
