@@ -30,7 +30,7 @@ public class CSVStateCensus {
 		}catch (IllegalStateException e) {
 				throw new CensusAnalyserException(e.getMessage(), ExceptionType.UNABLE_TO_PARSE);
 		}catch (RuntimeException e) {
-				throw new CensusAnalyserException(e.getMessage(), ExceptionType.WRONG_CSV_DATA);
+				throw new CensusAnalyserException(e.getMessage(), ExceptionType.CSV_FILE_INTERNAL_ISSUES);
 		}
 		
 	}
