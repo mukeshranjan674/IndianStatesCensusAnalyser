@@ -16,7 +16,7 @@ public class StateCensusAnalyserTest {
 	private static final String INDIAN_CENSUS_CSV_WRONG_DELIMITER = "./src/test/resources/WrongDelimiterData.csv";
 
 	@Test
-	public void whenGivenCsvPathShouldReturnNumberOfRecords() {
+	public void givenCsvPath_ShouldReturn_NumberOfRecords() {
 		try {
 			StateCensusAnalyser stateCensusAnalyser = new StateCensusAnalyser();
 			int numOfRecords = stateCensusAnalyser.loadIndiaCensusData(STATE_CENSUS_CSV_FILE_PATH);
@@ -28,7 +28,7 @@ public class StateCensusAnalyserTest {
 	}
 
 	@Test
-	public void whenGivenWrongFileShouldThrowCustomException() {
+	public void givenWrongFile_ShouldThrow_CustomException() {
 		try {
 			StateCensusAnalyser stateCensusAnalyser = new StateCensusAnalyser();
 			ExpectedException exceptionRule = ExpectedException.none();
@@ -40,7 +40,7 @@ public class StateCensusAnalyserTest {
 	}
 
 	@Test
-	public void whenGivenRightCsvFileButWrongTypeShouldThrowCustomException() {
+	public void givenRightCsvFile_ButWrongType_ShouldThrow_CustomException() {
 		try {
 			StateCensusAnalyser stateCensusAnalyser = new StateCensusAnalyser();
 			ExpectedException exceptionRule = ExpectedException.none();
@@ -52,7 +52,17 @@ public class StateCensusAnalyserTest {
 	}
 	
 	  @Test
-	    public void givenWrongDelimiter_InIndiaCensusData_ShouldReturnCustomExceptionType() {
+	    public void givenWrongDelimiter_InIndiaCensusData_ShouldThrow_CustomException() {
+	        try {
+	        	StateCensusAnalyser stateCensusAnalyser = new StateCensusAnalyser();
+	            int numOfRecords = stateCensusAnalyser.loadIndiaCensusData(INDIAN_CENSUS_CSV_WRONG_DELIMITER);
+	        } catch (CensusAnalyserException e) {
+	            assertEquals(CensusAnalyserException.ExceptionType.CSV_FILE_INTERNAL_ISSUES, e.type);
+	        }
+	    }
+	  
+	  @Test
+	    public void givenMissingHeader_InIndiaCensusData_ShouldThrow_CustomException() {
 	        try {
 	        	StateCensusAnalyser stateCensusAnalyser = new StateCensusAnalyser();
 	            int numOfRecords = stateCensusAnalyser.loadIndiaCensusData(INDIAN_CENSUS_CSV_WRONG_DELIMITER);
