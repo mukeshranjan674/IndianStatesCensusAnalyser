@@ -13,4 +13,6 @@ public class StateCensusAnalyser {
 	public int loadIndianStateCode(String STATE_CODE_DATA) throws CensusAnalyserException {
 		return new CSVStates().loadIndianStateCode(STATE_CODE_DATA);
 	}
+	
+
 }
