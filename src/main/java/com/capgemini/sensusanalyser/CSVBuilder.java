@@ -10,7 +10,7 @@ import com.opencsv.bean.CsvToBeanBuilder;
 
 public class CSVBuilder<E> implements ICSVBuilder<E> {
 
-	public Iterator<E> getCsvFileIterator(Reader reader, Class<E> csvClass) throws CensusAnalyserException {
+	public Iterator<E> getCsvFileIterator(Reader reader, Class<E> csvClass) throws CSVException {
 		try {
 			CsvToBeanBuilder<E> csvToBeanBuilder = new CsvToBeanBuilder<>(reader);
 			csvToBeanBuilder.withType(csvClass);
@@ -19,7 +19,7 @@ public class CSVBuilder<E> implements ICSVBuilder<E> {
 			Iterator<E> csvCensusIterator = csvToBean.iterator();
 			return csvCensusIterator;
 		} catch (IllegalStateException e) {
-			throw new CensusAnalyserException(e.getMessage(), ExceptionType.UNABLE_TO_PARSE);
+			throw new CSVException(e.getMessage(), CSVException.ExceptionType.UNABLE_TO_PARSE);
 		}
 	}
 }

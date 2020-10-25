@@ -20,7 +20,9 @@ public class CSVStates {
 			return numOfRecords;
 		} catch (IOException e) {
 			throw new CensusAnalyserException(e.getMessage(), ExceptionType.FILE_NOT_FOUND);
-		} catch (RuntimeException e) {
+		} catch (CSVException e) {
+			throw new CensusAnalyserException(e.getMessage(), ExceptionType.CSV_FILE_INTERNAL_ISSUES);
+		}catch (RuntimeException e) {
 			throw new CensusAnalyserException(e.getMessage(), ExceptionType.CSV_FILE_INTERNAL_ISSUES);
 		}
 	}
