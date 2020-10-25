@@ -12,9 +12,9 @@ public class CSVStateCensus {
 
 	public int loadIndiaCensusData(String STATE_CSV_DATA) throws CensusAnalyserException {
 		try (Reader reader = Files.newBufferedReader(Paths.get(STATE_CSV_DATA));) {
-			Iterator<StateCensusData> csvCensusIterator = new CsvIterator().getCsvFileIterator(reader,
+			Iterator<StateCensusData> csvCensusIterator = new CSVBuilder().getCsvFileIterator(reader,
 					StateCensusData.class);
-			int numOfRecords = new CsvIterator().getCount(csvCensusIterator);
+			int numOfRecords = new CSVBuilder().getCount(csvCensusIterator);
 			return numOfRecords;
 		} catch (IOException e) {
 			throw new CensusAnalyserException(e.getMessage(), ExceptionType.FILE_NOT_FOUND);

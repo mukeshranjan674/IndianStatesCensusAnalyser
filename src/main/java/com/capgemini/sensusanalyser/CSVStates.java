@@ -12,9 +12,9 @@ public class CSVStates {
 
 	public int loadIndianStateCode(String STATE_CODE_DATA) throws CensusAnalyserException {
 		try (Reader reader = Files.newBufferedReader(Paths.get(STATE_CODE_DATA));) {
-			Iterator<StateCodeData> csvStateCodeIterator = new CsvIterator().getCsvFileIterator(reader,
+			Iterator<StateCodeData> csvStateCodeIterator = new CSVBuilder().getCsvFileIterator(reader,
 					StateCodeData.class);
-			int numOfRecords = new CsvIterator().getCount(csvStateCodeIterator);
+			int numOfRecords = new CSVBuilder().getCount(csvStateCodeIterator);
 			return numOfRecords;
 		} catch (IOException e) {
 			throw new CensusAnalyserException(e.getMessage(), ExceptionType.FILE_NOT_FOUND);

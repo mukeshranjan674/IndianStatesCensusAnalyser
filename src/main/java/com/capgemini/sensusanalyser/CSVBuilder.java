@@ -8,7 +8,7 @@ import com.capgemini.sensusanalyser.CensusAnalyserException.ExceptionType;
 import com.opencsv.bean.CsvToBean;
 import com.opencsv.bean.CsvToBeanBuilder;
 
-public class CsvIterator {
+public class CSVBuilder {
 
 	public <E> Iterator<E> getCsvFileIterator(Reader reader, Class<E> csvClass) throws CensusAnalyserException {
 		try {
