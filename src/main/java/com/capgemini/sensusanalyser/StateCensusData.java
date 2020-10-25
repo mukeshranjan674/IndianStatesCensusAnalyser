@@ -7,7 +7,7 @@ public class StateCensusData {
 	@CsvBindByName(column = "State")
 	private String state;
 
-	@CsvBindByName(column = "Population", required = true )
+	@CsvBindByName(column = "Population", required = true)
 	private int population;
 
 	@CsvBindByName(column = "AreaInSqKm")

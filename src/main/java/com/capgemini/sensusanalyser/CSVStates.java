@@ -25,12 +25,12 @@ public class CSVStates {
 			numOfRecords = (int) StreamSupport.stream(stateCodeIterable.spliterator(), false).count();
 			return numOfRecords;
 		} catch (IOException e) {
-				throw new CensusAnalyserException(e.getMessage(), ExceptionType.FILE_NOT_FOUND);
-		}catch (IllegalStateException e) {
-				throw new CensusAnalyserException(e.getMessage(), ExceptionType.UNABLE_TO_PARSE);
-		}catch (RuntimeException e) {
-				throw new CensusAnalyserException(e.getMessage(), ExceptionType.CSV_FILE_INTERNAL_ISSUES);
+			throw new CensusAnalyserException(e.getMessage(), ExceptionType.FILE_NOT_FOUND);
+		} catch (IllegalStateException e) {
+			throw new CensusAnalyserException(e.getMessage(), ExceptionType.UNABLE_TO_PARSE);
+		} catch (RuntimeException e) {
+			throw new CensusAnalyserException(e.getMessage(), ExceptionType.CSV_FILE_INTERNAL_ISSUES);
 		}
-		
+
 	}
 }
