@@ -1,5 +1,7 @@
 package com.capgemini.sensusanalyser;
 
+import java.util.Iterator;
+
 public class StateCensusAnalyser {
 
 	public StateCensusAnalyser() {

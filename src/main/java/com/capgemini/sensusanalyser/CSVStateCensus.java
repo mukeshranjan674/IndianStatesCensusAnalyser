@@ -5,6 +5,7 @@ import java.io.Reader;
 import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.util.Iterator;
+import java.util.stream.StreamSupport;
 
 import com.capgemini.sensusanalyser.CensusAnalyserException.ExceptionType;
 
@@ -12,15 +13,21 @@ public class CSVStateCensus {
 
 	public int loadIndiaCensusData(String STATE_CSV_DATA) throws CensusAnalyserException {
 		try (Reader reader = Files.newBufferedReader(Paths.get(STATE_CSV_DATA));) {
-			Iterator<StateCensusData> csvCensusIterator = new CSVBuilder().getCsvFileIterator(reader,
-					StateCensusData.class);
-			int numOfRecords = new CSVBuilder().getCount(csvCensusIterator);
+			ICSVBuilder icsvBuilder = CSVBuilderFactory.createCSVBuilder();
+			Iterator<StateCensusData> csvCensusIterator = icsvBuilder.getCsvFileIterator(reader, StateCensusData.class);
+			int numOfRecords = this.getCount(csvCensusIterator);
+			System.out.println("2 " + numOfRecords);
 			return numOfRecords;
 		} catch (IOException e) {
 			throw new CensusAnalyserException(e.getMessage(), ExceptionType.FILE_NOT_FOUND);
 		} catch (RuntimeException e) {
 			throw new CensusAnalyserException(e.getMessage(), ExceptionType.CSV_FILE_INTERNAL_ISSUES);
 		}
+	}
 
+	public <E> int getCount(Iterator<E> csvIterator) {
+		Iterable<E> censusIterable = () -> csvIterator;
+		int numOfRecords = (int) StreamSupport.stream(censusIterable.spliterator(), false).count();
+		return numOfRecords;
 	}
 }
