@@ -19,7 +19,6 @@ public class CSVStateCensus {
 			ICSVBuilder icsvBuilder = CSVBuilderFactory.createCSVBuilder();
 			Iterator<StateCensusData> csvCensusIterator = icsvBuilder.getCsvFileIterator(reader, StateCensusData.class);
 			int numOfRecords = this.getCount(csvCensusIterator);
-			System.out.println("2 " + numOfRecords);
 			return numOfRecords;
 		} catch (IOException e) {
 			throw new CensusAnalyserException(e.getMessage(), ExceptionType.FILE_NOT_FOUND);
