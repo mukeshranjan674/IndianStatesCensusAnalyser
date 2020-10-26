@@ -33,6 +33,9 @@ public class StateCensusAnalyserTest {
 		exceptionRule.expect(CensusAnalyserException.class);
 	}
 
+	/**
+	 * UC1
+	 */
 	@Test
 	public void givenCsvPath_ShouldReturn_NumberOfRecords() {
 		try {
@@ -78,6 +81,9 @@ public class StateCensusAnalyserTest {
 		}
 	}
 
+	/**
+	 * UC2
+	 */
 	@Test
 	public void givenCsvPath_InStateCodeData_ShouldReturn_NumberOfRecords() {
 		try {
@@ -123,6 +129,11 @@ public class StateCensusAnalyserTest {
 		}
 	}
 
+	/**
+	 * UC3
+	 * 
+	 * @throws CensusAnalyserException
+	 */
 	@Test
 	public void givenIndianCensusData_WhenSortedOnState_ShouldReturnSortedResult() throws CensusAnalyserException {
 		String sortedCensusData = stateCensusAnalyser.getStateWiseSortedCensusData(STATE_CENSUS_DATA);
@@ -131,6 +142,11 @@ public class StateCensusAnalyserTest {
 		assertEquals("West Bengal", censusCSV[censusCSV.length - 1].getState());
 	}
 
+	/**
+	 * UC4
+	 * 
+	 * @throws CensusAnalyserException
+	 */
 	@Test
 	public void givenStateCodeData_WhenSortedOnStateCode_ShouldReturnSortedResult() throws CensusAnalyserException {
 		String sortedStateCodeData = stateCensusAnalyser.getStateCodeWiseSortedData(STATE_CODE_DATA);
@@ -139,6 +155,11 @@ public class StateCensusAnalyserTest {
 		assertEquals("WB", stateCodeCSV[stateCodeCSV.length - 1].getStateCode());
 	}
 
+	/**
+	 * UC5
+	 * 
+	 * @throws CensusAnalyserException
+	 */
 	@Test
 	public void givenStateCodeData_WhenSortedOnPopulation_ShouldReturnSortedResult() throws CensusAnalyserException {
 		String sortedCensusData = stateCensusAnalyser.getPopulationWiseSortedCensusData(STATE_CENSUS_DATA);
@@ -149,6 +170,11 @@ public class StateCensusAnalyserTest {
 		assertEquals(censusCSV.length, censusCSVfromFile.length);
 	}
 
+	/**
+	 * UC6
+	 * 
+	 * @throws CensusAnalyserException
+	 */
 	@Test
 	public void givenStateCodeData_WhenSortedOnPopulationDensity_ShouldReturnSortedResult()
 			throws CensusAnalyserException {
@@ -159,9 +185,13 @@ public class StateCensusAnalyserTest {
 		assertEquals("Arunachal Pradesh", censusCSV[censusCSV.length - 1].getState());
 	}
 
+	/**
+	 * UC7
+	 * 
+	 * @throws CensusAnalyserException
+	 */
 	@Test
-	public void givenStateCodeData_WhenSortedOnArea_ShouldReturnSortedResult()
-			throws CensusAnalyserException {
+	public void givenStateCodeData_WhenSortedOnArea_ShouldReturnSortedResult() throws CensusAnalyserException {
 		String sortedCensusData = stateCensusAnalyser.getAreaWiseSortedCensusData(STATE_CENSUS_DATA);
 		new Json().writeList("Area", sortedCensusData);
 		StateCensusData[] censusCSV = new Gson().fromJson(sortedCensusData, StateCensusData[].class);

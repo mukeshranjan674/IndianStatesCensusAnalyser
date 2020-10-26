@@ -10,6 +10,12 @@ import java.nio.file.Paths;
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
 
+/**
+ * UC5 UC6
+ * 
+ * @author LENOVO
+ *
+ */
 public class Json {
 	private static final String PATH = "./src/test/resources/JsonFiles";
 
@@ -28,7 +34,7 @@ public class Json {
 		String jsonString = new String();
 		try {
 			Reader reader = Files.newBufferedReader(Paths.get(PATH + "\\" + fileName));
-			jsonString= new Gson().fromJson(reader, new TypeToken<String>() {
+			jsonString = new Gson().fromJson(reader, new TypeToken<String>() {
 			}.getType());
 		} catch (IOException e) {
 			e.printStackTrace();
