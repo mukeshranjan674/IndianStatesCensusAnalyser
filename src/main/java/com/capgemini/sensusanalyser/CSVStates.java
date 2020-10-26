@@ -4,9 +4,7 @@ import java.io.IOException;
 import java.io.Reader;
 import java.nio.file.Files;
 import java.nio.file.Paths;
-import java.util.Iterator;
 import java.util.List;
-import java.util.stream.StreamSupport;
 
 import com.capgemini.sensusanalyser.CensusAnalyserException.ExceptionType;
 import com.opencsvbuilder.CSVBuilderFactory;
