@@ -159,4 +159,13 @@ public class StateCensusAnalyserTest {
 		assertEquals("Arunachal Pradesh", censusCSV[censusCSV.length - 1].getState());
 	}
 
+	@Test
+	public void givenStateCodeData_WhenSortedOnArea_ShouldReturnSortedResult()
+			throws CensusAnalyserException {
+		String sortedCensusData = stateCensusAnalyser.getAreaWiseSortedCensusData(STATE_CENSUS_DATA);
+		new Json().writeList("Area", sortedCensusData);
+		StateCensusData[] censusCSV = new Gson().fromJson(sortedCensusData, StateCensusData[].class);
+		assertEquals("Rajasthan", censusCSV[0].getState());
+		assertEquals("Goa", censusCSV[censusCSV.length - 1].getState());
+	}
 }
