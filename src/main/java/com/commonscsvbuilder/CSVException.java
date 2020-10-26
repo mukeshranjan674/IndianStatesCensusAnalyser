@@ -1,4 +1,4 @@
-package com.csvbuilder;
+package com.commonscsvbuilder;
 
 public class CSVException extends Throwable{
 	public CSVException(String message, ExceptionType type) {

@@ -1,4 +1,4 @@
-package com.csvbuilder;
+package com.commonscsvbuilder;
 
 public class CSVBuilderFactory {
 
